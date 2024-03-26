@@ -13,7 +13,7 @@ trait SetRedirectResponse
 {
     use SetFlashMessage;
 
-    protected function responseJson($message = [], $responseCode = 200, $data = null, $error = false): JsonResponse
+    protected function jsonResponse($message = [], $responseCode = 200, $data = null, $error = false): JsonResponse
     {
         return response()->json([
             'error' => $error,
@@ -23,7 +23,7 @@ trait SetRedirectResponse
         ]);
     }
 
-    protected function responseRedirect($route, $message, $type = 'success', $error = false, $withOldInputWhenError = false, $routeParam = null): RedirectResponse
+    protected function redirectResponse($route, $message, $type = 'success', $error = false, $withOldInputWhenError = false, $routeParam = null): RedirectResponse
     {
         $this->setFlashMessage($message, $type); // Setting the flash Message.
         $this->showFlashMessages();              // Showing the Flash message which are actually setting the messages to session.
@@ -39,7 +39,7 @@ trait SetRedirectResponse
             : redirect($route);
     }
 
-    protected function responseRedirectBack($message, $type = 'success', $error = false, $withOldInputWhenError = false): RedirectResponse
+    protected function redirectBack($message, $type = 'success', $error = false, $withOldInputWhenError = false): RedirectResponse
     {
         if ($message) {
             $this->setFlashMessage($message, $type);
@@ -49,7 +49,7 @@ trait SetRedirectResponse
         return redirect()->back();
     }
 
-    protected function responseBackWithException($throwable, $message = 'Something went wrong. Please try again.', $type = 'info', $error = true, $withOldInputWhenError = true): RedirectResponse
+    protected function redirectBackWithException($throwable, $message = 'Something went wrong. Please try again.', $type = 'info', $error = true, $withOldInputWhenError = true): RedirectResponse
     {
         $this->setFlashMessage($message, $type);
         $this->showFlashMessages();
