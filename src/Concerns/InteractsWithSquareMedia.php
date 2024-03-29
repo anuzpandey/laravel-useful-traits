@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace AnuzPandey\LaravelUsefulTraits\Concerns;
 
-use Laravolt\Avatar\Facade as Avatar;
+// use Laravolt\Avatar\Facade as Avatar;
 use Spatie\Image\Enums\Fit;
 use Spatie\Image\Exceptions\InvalidManipulation;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -50,10 +50,10 @@ trait InteractsWithSquareMedia
         }
     }
 
-    public function getFirstMediaOrFallBackUrl(string $collectionName = 'image', $conversion = 'thumb', string $subject = 'name'): string
+    public function getFirstMediaOrFallBackUrl(string $collectionName = 'image', $conversion = 'thumb', string $subject = 'title'): ?string
     {
         return ! empty($this->getFirstMediaurl($collectionName, $conversion))
             ? $this->getFirstMediaUrl($collectionName, $conversion)
-            : Avatar::create($this->{$subject})->setDimension('200')->toBase64();
+            : null; // Avatar::create($this->{$subject})->setDimension('200')->toBase64();
     }
 }

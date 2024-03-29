@@ -47,7 +47,7 @@ trait InteractsWith16IsTo9Media
             ->performOnCollections('image');
 
         $this->addMediaConversion('thumb-sm')
-            ->fit(Fit::Crop, 360, 202.5)
+            ->fit(Fit::Crop, 360, 203)
             ->keepOriginalImageFormat()
             ->performOnCollections('image');
 
@@ -59,5 +59,12 @@ trait InteractsWith16IsTo9Media
         if (method_exists($this, 'registerAdditionalMediaConversions')) {
             $this->registerAdditionalMediaConversions();
         }
+    }
+
+    public function getFirstMediaOrFallBackUrl(string $collectionName = 'image', $conversion = 'square-thumb', string $subject = 'title'): ?string
+    {
+        return ! empty($this->getFirstMediaurl($collectionName, $conversion))
+            ? $this->getFirstMediaUrl($collectionName, $conversion)
+            : null; // Avatar::create($this->{$subject})->setDimension('200')->toBase64();
     }
 }
