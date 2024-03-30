@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait BelongsToUser
 {
-    public function initializeBelongsToUserTrait(): void
+    public function initializeBelongsToUser(): void
     {
         $this->fillable[] = 'user_id';
         $this->casts += ['user_id' => 'integer'];
