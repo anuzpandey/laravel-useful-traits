@@ -2,6 +2,11 @@
 
 All notable changes to `laravel-useful-traits` will be documented in this file.
 
+## Release 1.3.0 - 2024-03-30
+
+⚡ Add `HasScheduledAtColumn` Trait.
+🔨 Fix `BelogsToUser` Trait typo on booting trait method.
+
 ## Release 1.2.1 - 2024-03-29
 
 🔨 Remove `laravolt/avatar` as it does not support Laravel 11 yet.
