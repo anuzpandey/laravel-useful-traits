@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-useful-traits` will be documented in this file.
 
+## Release 1.3.1 - 2024-03-30
+
+- ⚡ Add `HasSeoColumns` Trait
+
 ## Release 1.3.0 - 2024-03-30
 
 ⚡ Add `HasScheduledAtColumn` Trait.
