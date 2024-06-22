@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-useful-traits` will be documented in this file.
 
+## Release 1.3.2 - 2024-06-22
+
+- Add Customizable Fallback Image Path for InteractsWithMedia Traits.
+
 ## Release 1.3.1 - 2024-03-30
 
 - ⚡ Add `HasSeoColumns` Trait
