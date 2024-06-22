@@ -17,7 +17,8 @@ trait InteractsWithSquareMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('image')
-            ->useFallbackPath(public_path('common/category-placeholder-original.jpg'))
+            ->useFallbackUrl($this->getFallBackImagePathAndUrl())
+            ->useFallbackPath(public_path($this->getFallBackImagePathAndUrl()))
             ->singleFile();
 
         if (method_exists($this, 'registerAdditionalMediaCollections')) {
@@ -55,5 +56,14 @@ trait InteractsWithSquareMedia
         return ! empty($this->getFirstMediaurl($collectionName, $conversion))
             ? $this->getFirstMediaUrl($collectionName, $conversion)
             : null; // Avatar::create($this->{$subject})->setDimension('200')->toBase64();
+    }
+
+    private function getFallBackImagePathAndUrl(): string
+    {
+        if ( ! defined('static::FALLBACK_IMAGE_PATH')) {
+            return '/common/square-placeholder.jpg';
+        }
+
+        return static::FALLBACK_IMAGE_PATH;
     }
 }

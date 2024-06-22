@@ -16,9 +16,8 @@ trait InteractsWith16IsTo9Media
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('image')
-            ->useFallbackUrl('/empty-states/no-image-found.png', 'original')
-            ->useFallbackUrl('/empty-states/no-image-found-original-thumb.png', 'original-thumb')
-            ->useFallbackUrl('/empty-states/no-image-found-square-thumb.png', 'square-thumb')
+            ->useFallbackUrl($this->getFallBackImagePathAndUrl())
+            ->useFallbackPath(public_path($this->getFallBackImagePathAndUrl()))
             ->singleFile();
 
         if (method_exists($this, 'registerAdditionalMediaCollections')) {
@@ -66,5 +65,14 @@ trait InteractsWith16IsTo9Media
         return ! empty($this->getFirstMediaurl($collectionName, $conversion))
             ? $this->getFirstMediaUrl($collectionName, $conversion)
             : null; // Avatar::create($this->{$subject})->setDimension('200')->toBase64();
+    }
+
+    private function getFallBackImagePathAndUrl(): string
+    {
+        if ( ! defined('static::FALLBACK_IMAGE_PATH')) {
+            return '/common/16-by-9-placeholder.jpg';
+        }
+
+        return static::FALLBACK_IMAGE_PATH;
     }
 }
