@@ -36,10 +36,10 @@ trait InteractsWithFilePond
         $fileData = json_decode($fileData, true, 512, JSON_THROW_ON_ERROR);
 
         $model->addMedia(
-            storage_path('app/uploads/files/tmp/'.$fileData['folder'].'/'.$fileData['file_name'])
+            storage_path('app/private/uploads/files/tmp/'.$fileData['folder'].'/'.$fileData['file_name'])
         )->toMediaCollection($key);
 
         // Remove Temporary file after upload
-        Storage::deleteDirectory('uploads/files/tmp/'.$fileData['folder']);
+        Storage::deleteDirectory('app/private/uploads/files/tmp/'.$fileData['folder']);
     }
 }
