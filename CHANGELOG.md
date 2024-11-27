@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-useful-traits` will be documented in this file.
 
+## Release 1.4.0 - 2024-11-27
+
+- 🔨 fix: update file `path` used in `InteractsWithFilePond` for Laravel 11.
+
 ## Release 1.3.2 - 2024-06-22
 
 - Add Customizable Fallback Image Path for InteractsWithMedia Traits.
